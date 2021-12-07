@@ -22,10 +22,3 @@ class Rmq:
         self.rmq = rmq
 
 
-a = [1,2,3,4,5,6,7,8,9]
-
-rmq = Rmq(a)
-
-print(rmq)
-
-
