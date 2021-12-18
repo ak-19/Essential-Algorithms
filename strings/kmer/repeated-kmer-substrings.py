@@ -24,6 +24,36 @@ def findRepeatedDnaSequencesRK(s, k, alpha='ACGT'):
         else:
             seen.add(hh)
     
-    return result
+    return result   
         
 print(findRepeatedDnaSequencesRK('AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT', 10))
+
+def findRepeatedDnaSequencesBitmask(s, k):
+    cc = lambda x: 'ACGT'.index(x)        
+    N = len(s)
+    
+    if N < k: return []        
+    A = [cc(c) for c in s]
+    
+    seen = set()
+    result = set()
+    
+    bitmask = 0
+    
+    #rabin-karpp rolling hash
+    for i in range(k): 
+        bitmask = (bitmask << 2) | A[i]            
+    seen.add(bitmask)
+    
+    for i in range(1, N - k + 1):            
+        bitmask = (bitmask << 2) | A[i+k-1]            
+        bitmask &= ~(3 << 2 * k)
+        
+        if bitmask in seen:
+            result.add(s[i:i+k])
+        else:
+            seen.add(bitmask)
+    
+    return result
+
+print(findRepeatedDnaSequencesBitmask('AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT', 10))
