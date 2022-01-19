@@ -17,3 +17,12 @@ def detectCycle(head):
         head = head.next
         
     return node
+
+def detectCycleHashing(head):
+    visited = set()
+    node = head
+    while node:            
+        if node in visited: return node
+        visited.add(node)
+        node = node.next                                    
+    return None
