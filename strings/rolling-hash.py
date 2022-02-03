@@ -13,3 +13,4 @@ def polynomial_rolling_hash(str):
 text = "ante-test"
 
 print(f"Hash of '{text}' = {polynomial_rolling_hash(text)}")
+print(f"Hash of '{'AA'}' = {polynomial_rolling_hash('AA')}")
