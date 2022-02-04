@@ -1,7 +1,7 @@
 def patch_array(A, n):    
     '''
-    Given array A, find number of missing numbers that are ned to 
-    construct continious sequence of numbers [1,n] 
+    Given array A, find number of missing numbers that are needed to 
+    construct continious sequence of numbers in range [1,n] 
     '''            
     patches = 0
     i = 0
