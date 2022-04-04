@@ -36,8 +36,8 @@ def z_count(s):
 
     return count
 
-print(z_count('aaavaavaaaavvava') == [16, 2, 1, 0, 2, 1, 0, 3, 4, 2, 1, 0, 0, 1, 0, 1])
-print(z_count_v2('aaavaavaaaavvava') == [16, 2, 1, 0, 2, 1, 0, 3, 4, 2, 1, 0, 0, 1, 0, 1])
+# print(z_count('aaavaavaaaavvava') == [16, 2, 1, 0, 2, 1, 0, 3, 4, 2, 1, 0, 0, 1, 0, 1])
+# print(z_count_v2('aaavaavaaaavvava') == [16, 2, 1, 0, 2, 1, 0, 3, 4, 2, 1, 0, 0, 1, 0, 1])
 
 #               L
 #                   R
