@@ -1,3 +1,5 @@
+# maximum average value contiguous subarray with length greater or equal to k
+# calculation error with less than 0.00001 margin
 def findMaxAverage(A, k, error_margin):        
     N = len(A)  
     lo, hi = min(A), max(A)
