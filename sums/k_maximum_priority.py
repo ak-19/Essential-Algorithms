@@ -21,8 +21,3 @@ def k_maximum_priority(nums, k):
             heappush(pq, (next_smaller_sum + A[index + 1], index + 1))
 
     return result
-
-
-print(k_maximum_priority([2,4,-2], k = 5))
-print(k_maximum_priority([1,-2,3,4,-10,12], k = 16))
- 
