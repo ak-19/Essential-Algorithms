@@ -23,3 +23,25 @@ class UnionFind:
 
     def connected(self, x, y):
         return self.find(x) == self.find(y)
+
+#UnionFind variation where size of component, not rank, matters!
+class UF:
+    def __init__(self, N) -> None:
+        self.p = list(range(N))
+        self.size = [1] * N
+
+    def find(self, x):
+        if self.p[x] != x:
+            self.p[x] = self.find(self.p[x])
+        return self.p[x]
+
+    def connect(self, x, y):
+        px = self.find(self.p[x])
+        py = self.find(self.p[y])
+
+        if px != py:
+            self.p[py]= self.p[px]
+            self.size[px] += self.size[py]
+
+    def get_size(self, x):
+        return self.size[x]
