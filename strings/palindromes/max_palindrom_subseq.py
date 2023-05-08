@@ -1,4 +1,23 @@
-# Given a string, find the length of its Longest Palindromic Subsequence (LPS).
+#1. old school, iterative bottom up dp
+def longest_palindromic_subsequence_length(s) -> int:
+    N = len(s)
+    dp = [[0] * N for _ in range(N)]                    
+    max_palindrome = 1        
+
+    for i in range(N - 1, -1, -1):
+        dp[i][i] = 1
+
+        for j in range(i + 1, N):   
+            if s[i] == s[j]:
+                dp[i][j] =  2 + dp[i + 1][j - 1]
+            else:
+                dp[i][j] =  max(dp[i + 1][j] , dp[i][j - 1])
+
+            max_palindrome = max(max_palindrome, dp[i][j]) 
+    
+    return max_palindrome 
+
+#2. Given a string, find the length of its Longest Palindromic Subsequence (LPS).
 def max_palindromic_subsequence_length(s) -> int:
     N = len(s)
     dp = [[0] * (N + 1) for _ in range(N)]        
@@ -16,7 +35,7 @@ def max_palindromic_subsequence_length(s) -> int:
                 
             max_palindrome = max(max_palindrome, dp[i][i + size])             
     return max_palindrome
-# 2. alternative solution wich uses reverse string
+# 3. alternative solution wich uses reverse string
 # Given a string and its reverse, find the length of its Longest Palindromic Subsequence (LPS).
 def max_palindromic_subsequence_length(s, s2):
     N = len(s)
