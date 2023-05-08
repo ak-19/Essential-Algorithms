@@ -1,5 +1,5 @@
 #1. old school, iterative bottom up dp
-def longest_palindromic_subsequence_length(s) -> int:
+def longest_palindromic_subsequence_length1(s) -> int:
     N = len(s)
     dp = [[0] * N for _ in range(N)]                    
     max_palindrome = 1        
@@ -18,7 +18,7 @@ def longest_palindromic_subsequence_length(s) -> int:
     return max_palindrome 
 
 #2. Given a string, find the length of its Longest Palindromic Subsequence (LPS).
-def max_palindromic_subsequence_length(s) -> int:
+def max_palindromic_subsequence_length2(s) -> int:
     N = len(s)
     dp = [[0] * (N + 1) for _ in range(N)]        
     for i in range(N):  dp[i][i] = 1
@@ -37,7 +37,7 @@ def max_palindromic_subsequence_length(s) -> int:
     return max_palindrome
 # 3. alternative solution wich uses reverse string
 # Given a string and its reverse, find the length of its Longest Palindromic Subsequence (LPS).
-def max_palindromic_subsequence_length(s, s2):
+def max_palindromic_subsequence_length3(s, s2):
     N = len(s)
     dp = [[0]*(N + 1) for _ in range(N + 1)]
     for i in range(N + 1):
