@@ -16,15 +16,18 @@ class FenwickTree:
         self.construct(i, val - self.A[i])
         self.A[i] = val
     
-    def get_val(self, i):
+    def get_prefix(self, i):
         i, s = i + 1, 0
         while i > 0:
             s += self.tree[i]               
             i -= (i & -i)            
         return s
+
+    def get_val(self, i):
+        return self.A[i]        
     
     def get_range(self, i, j):
-        return self.get_val(j) - self.get_val(i - 1)    
+        return self.get_prefix(j) - self.get_prefix(i - 1)    
 
     def sumRange(self, left: int, right: int) -> int:
         return self.get_range(left, right)
