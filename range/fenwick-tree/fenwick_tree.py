@@ -7,16 +7,19 @@ class FenwickTree:
         for i in range(N): self.construct(i, A[i])
             
     def construct(self, i, val):
+        self._check_index(i)
         i += 1
         while i <= self.N:
             self.tree[i] += val
             i += (i & -i)    
             
     def update(self, i, val):
+        self._check_index(i)
         self.construct(i, val - self.A[i])
         self.A[i] = val
     
     def get_prefix(self, i):
+        self._check_index(i)
         i, s = i + 1, 0
         while i > 0:
             s += self.tree[i]               
@@ -24,10 +27,19 @@ class FenwickTree:
         return s
 
     def get_val(self, i):
+        self._check_index(i)
         return self.A[i]        
     
     def get_range(self, i, j):
-        return self.get_prefix(j) - self.get_prefix(i - 1)    
+        self._check_index(i)
+        self._check_index(j)
+        if i > j:
+            raise ValueError("range start must not exceed range end")
+        return self.get_prefix(j) - (self.get_prefix(i - 1) if i else 0)
+
+    def _check_index(self, i):
+        if not 0 <= i < self.N:
+            raise IndexError("Fenwick tree index out of range")
 
     def sumRange(self, left: int, right: int) -> int:
         return self.get_range(left, right)
